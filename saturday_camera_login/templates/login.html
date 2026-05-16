@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Camera Auth Practice{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h2>Login</h2>
+    <p>Use the demo credentials and keep your face visible in the camera.</p>
+  </div>
+
+  <form class="login-form" data-login-form action="{{ url_for('auth.login_post') }}" method="post">
+    <div class="field-grid">
+      <label>
+        Username
+        <input name="username" type="text" placeholder="student" autocomplete="username" required>
+      </label>
+
+      <label>
+        Password
+        <input name="password" type="password" placeholder="practice123" autocomplete="current-password" required>
+      </label>
+    </div>
+
+    <div class="camera-card">
+      <div class="camera-stage">
+        <video data-camera-video autoplay playsinline></video>
+        <img data-camera-preview alt="Captured camera preview">
+      </div>
+      <p class="camera-status" data-camera-status>Camera will start when the page loads.</p>
+      <input type="hidden" name="camera_frame" data-camera-input>
+    </div>
+
+    <button class="primary-button" type="submit">Capture face and sign in</button>
+  </form>
+
+  <div class="demo-box">
+    <h3>Practice credentials</h3>
+    <p>student / practice123</p>
+    <p>admin / camera456</p>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+{% endblock %}

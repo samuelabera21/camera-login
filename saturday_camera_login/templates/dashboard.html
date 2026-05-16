@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Camera Auth Practice{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h2>Dashboard</h2>
+    <p>You are signed in as {{ username }}.</p>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-tile">
+      <span class="info-label">Detected faces</span>
+      <strong>{{ faces_seen }}</strong>
+    </div>
+    <div class="info-tile">
+      <span class="info-label">Auth status</span>
+      <strong>Verified</strong>
+    </div>
+  </div>
+
+  <form action="{{ url_for('auth.logout') }}" method="post">
+    <button class="secondary-button" type="submit">Logout</button>
+  </form>
+</div>
+{% endblock %}
